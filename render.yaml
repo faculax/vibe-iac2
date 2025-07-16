@@ -1,14 +1,4 @@
 # Exported from Render on 2025-07-16T07:29:15Z
-databases:
-- name: vibe-trading-app-postgres
-  databaseName: trading_db_fkmw
-  user: admin
-  plan: free
-  region: frankfurt
-  ipAllowList:
-  - source: 0.0.0.0/0
-    description: everywhere
-  postgresMajorVersion: "16"
 services:
 - type: web
   name: vibe-trading-app-api-gateway
