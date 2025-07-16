@@ -1,0 +1,7 @@
+FROM obsidiandynamics/kafka
+
+ENV KAFKA_LISTENERS=PLAINTEXT://:9092 \
+    KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://vibe-trading-app-kafka-private:9092 \
+    KAFKA_ZOOKEEPER_CONNECT=localhost:2181
+
+EXPOSE 9092

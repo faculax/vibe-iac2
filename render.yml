@@ -1,0 +1,66 @@
+# Exported from Render on 2025-07-16T07:29:15Z
+databases:
+- name: vibe-trading-app-postgres
+  databaseName: trading_db_fkmw
+  user: admin
+  plan: free
+  region: frankfurt
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: vibe-trading-app-api-gateway
+  runtime: docker
+  repo: https://github.com/faculax/vibe-trading-app
+  branch: release
+  plan: free
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: services/api-gateway/Dockerfile
+  autoDeployTrigger: "off"
+- type: web
+  name: vibe-trading-app-trader-ui
+  runtime: docker
+  repo: https://github.com/faculax/vibe-trading-app
+  branch: release
+  plan: free
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: Dockerfile
+  autoDeployTrigger: "off"
+  rootDir: ui/trader-ui/
+- type: web
+  name: vibe-trading-app-oms
+  runtime: docker
+  repo: https://github.com/faculax/vibe-trading-app
+  branch: release
+  plan: free
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: services/order-management-system/Dockerfile
+  autoDeployTrigger: "off"
+- type: pserv
+  name: vibe-trading-app-kafka-private
+  runtime: docker
+  repo: https://github.com/faculax/vibe-trading-app
+  branch: release
+  plan: starter
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: services/kafka-zookeper/Dockerfile
+  autoDeployTrigger: "off"
+- type: web
+  name: vibe-trading-app-client-ui
+  runtime: docker
+  repo: https://github.com/faculax/vibe-trading-app
+  branch: release
+  plan: free
+  region: frankfurt
+  dockerContext: .
+  dockerfilePath: Dockerfile
+  autoDeployTrigger: "off"
+  rootDir: ui/client-ui/
+version: "1"
+
